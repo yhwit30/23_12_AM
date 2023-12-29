@@ -50,32 +50,22 @@ public class Main {
 					System.out.printf("%4d  /  %s\n", article.getId(), article.getTitle());
 				}
 
-			} else if (cmd.startsWith("article detail")) {
-				if (cmd.charAt(15) == '1') {
-					if (articles.size() == 0) {
-						System.out.printf("%d번 게시글은 없습니다.\n", 1);
-					} else if(articles.size() > 0) {
-						Article article = articles.get(0);
-						System.out.println("번호 : " + article.getId());
-						System.out.println("날짜 : 2023-12-12 12:12:12");
-						System.out.println("제목 : " + article.getTitle());
-						System.out.println("내용 : " + article.getbody());
-					}
-					
-
+			} else if (cmd.startsWith("article detail ")) {
+				String[] cmdDiv = cmd.split(" ");
+				System.out.println(cmdDiv[0]); //article
+				System.out.println(cmdDiv[1]); //detail
+				System.out.println(cmdDiv[2]); //숫자
+				
+				int id = 0;
+				try {
+					id = Integer.parseInt(cmdDiv[2]);
+				} catch (Exception e) {
+					System.out.println("번호는 정수로 입력해");
+					continue;
 				}
-				if (cmd.charAt(15) == '2') {
-					if (articles.size() == 1) {
-						System.out.printf("%d번 게시글은 없습니다.\n", 2);
-					}else if(articles.size() > 0) {
-						Article article = articles.get(1);
-						System.out.println("번호 : " + article.getId());
-						System.out.println("날짜 : ");
-						System.out.println("제목 : " + article.getTitle());
-						System.out.println("내용 : " + article.getbody());
-					
-					}
-				}
+				
+				
+				System.out.printf("%d번 게시글은 없습니다.\n", id);
 			}
 
 			else {
