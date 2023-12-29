@@ -2,12 +2,12 @@
 public class Article {
 	private int id;
 	private String title;
-	private String content;
-	
-	Article (int id, String title, String content){
+	private String body;
+
+	Article(int id, String title, String body) {
 		this.id = id;
 		this.title = title;
-		this.content = content;
+		this.body = body;
 	}
 
 	public int getId() {
@@ -26,13 +26,12 @@ public class Article {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	public String getbody() {
+		return body;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setbody(String body) {
+		this.body = body;
 	}
-	
-	
+
 }
