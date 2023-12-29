@@ -41,21 +41,18 @@ public class Main {
 				System.out.println("== 게시글 목록 ==");
 				if (articles.size() == 0) {
 					System.out.println("아무것도 없어");
+				} else {
+					System.out.println("번호  /  제목  ");
+
+					for (int i = articles.size() - 1; i >= 0; i--) {
+						Article article = articles.get(i);
+						System.out.printf("%4d  /  %s\n", article.getId(), article.getTitle());
+					}
 				}
 
-				System.out.println("번호  /  제목  ");
-
-				for (int i = articles.size() - 1; i >= 0; i--) {
-					Article article = articles.get(i);
-					System.out.printf("%4d  /  %s\n", article.getId(), article.getTitle());
-				}
-
-			} else if (cmd.startsWith("article detail ")) {
+			} else if (cmd.startsWith("article detail")) {
 				String[] cmdDiv = cmd.split(" ");
-				System.out.println(cmdDiv[0]); //article
-				System.out.println(cmdDiv[1]); //detail
-				System.out.println(cmdDiv[2]); //숫자
-				
+
 				int id = 0;
 				try {
 					id = Integer.parseInt(cmdDiv[2]);
@@ -63,9 +60,22 @@ public class Main {
 					System.out.println("번호는 정수로 입력해");
 					continue;
 				}
-				
-				
-				System.out.printf("%d번 게시글은 없습니다.\n", id);
+
+				boolean found = false;
+
+				for (int i = 0; i < articles.size(); i++) {
+					Article article = articles.get(i);
+					if (id == article.getId()) {
+						found = true;
+						break;
+					}
+				}
+
+				if (found == false) {
+					System.out.printf("%d번 게시글은 없습니다.\n", id);
+				} else {
+					System.out.println("너 찾는거 있더라");
+				}
 			}
 
 			else {
